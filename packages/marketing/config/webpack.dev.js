@@ -3,6 +3,8 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const commonConfig = require("./webpack.common");
 
+const pkgJson = require("../package.json");
+
 const devConfig = {
 	mode: "development",
 	devServer: {
@@ -18,7 +20,7 @@ const devConfig = {
 			exposes: {
 				"./Marketing": "./src/bootstrap",
 			},
-			shared: ["react", "react-dom"],
+			shared: pkgJson.dependencies,
 		}),
 		new HTMLWebpackPlugin({
 			template: "./public/index.html",
