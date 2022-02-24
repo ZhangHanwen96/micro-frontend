@@ -7,11 +7,10 @@ const pkgJson = require("../package.json");
 
 const devConfig = {
 	mode: "development",
+	output: {},
 	devServer: {
 		port: 8081,
-		historyApiFallback: {
-			index: "index.html",
-		},
+		historyApiFallback: true,
 	},
 	plugins: [
 		new ModuleFederationPlugin({
@@ -20,7 +19,6 @@ const devConfig = {
 			exposes: {
 				"./Marketing": "./src/bootstrap",
 			},
-			shared: pkgJson.dependencies,
 		}),
 		new HTMLWebpackPlugin({
 			template: "./public/index.html",

@@ -1,4 +1,4 @@
-import { mount } from "marketing/Marketing";
+import { mount } from "auth/Auth";
 import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -17,6 +17,7 @@ export default () => {
 					}
 				},
 				initialPath: history.location.pathname,
+				onSignIn: () => {},
 			});
 
 			history.listen(onParentNavigate);
